@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <img width="25%" src="./assets/logo.png">
     <DragTree  :list.sync="menus"  ref="tree"/>
   </div>
 </template>
 
 <script>
-import DragTree from "./components/DragTree.vue";
+// import DragTree from "./components/DragTree.vue";
 
 export default {
   name: "App",
@@ -16,7 +15,7 @@ export default {
     }
   },
   components: {
-    DragTree
+    DragTree: () => import("./components/DragTree.vue")
   }
 };
 </script>

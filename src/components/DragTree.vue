@@ -11,14 +11,13 @@
             v-if="item.subs && item.subs.length"
           />
           <el-input
-            :disabled="!isEditing"
             v-model="item.name"
             size="mini"
             style="display: inline-block;width: 200px;"
             placeholder="请输入看板名"
           />
         </div>
-        <div class="btns" v-show="isEditing">
+        <div class="btns" >
           <el-button
             v-if="item.level < maxLevel"
             type="text"
@@ -35,7 +34,6 @@
         v-show="item.expanding"
         :expandAll="expandAll"
         :level="level+1"
-        :isEditing="isEditing"
       />
     </div>
   </draggable>
@@ -51,10 +49,7 @@ export default {
       type: Array,
       default: () => []
     },
-    isEditing: {
-      type: Boolean,
-      default: false
-    },
+  
     expandAll: {
       type: Boolean,
       default: false
@@ -79,7 +74,9 @@ export default {
     }
   },
   components: {
-    draggable
+    draggable,
+    Iconfont: () => import("../components/Iconfont.vue")
+  
   },
   methods: {
     addChild(list) {
